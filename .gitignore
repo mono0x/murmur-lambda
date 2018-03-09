@@ -6,3 +6,4 @@
 /vendor/
 
 /assets.go
+/google_client_credentials.json

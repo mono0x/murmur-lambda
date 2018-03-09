@@ -12,6 +12,7 @@ package:
    - ./**
  include:
    - ./bin/**
+   - ./google_client_credentials.json
 
 functions:
   murmur-lambda:
