@@ -5,6 +5,7 @@ import (
 
 	"github.com/aws/aws-lambda-go/lambda"
 	murmur "github.com/mono0x/murmur/lib"
+	"github.com/pkg/errors"
 	"golang.org/x/sync/errgroup"
 )
 
@@ -25,7 +26,7 @@ func handler() error {
 		eg.Go(func() error {
 			file, err := Assets.Open(path)
 			if err != nil {
-				return err
+				return errors.WithStack(err)
 			}
 			defer file.Close()
 
