@@ -117,7 +117,7 @@
   branch = "master"
   name = "github.com/mono0x/murmur"
   packages = ["lib"]
-  revision = "356bc46aecef332b72451e55ef0d6a39817c11d1"
+  revision = "f7aeb172da01f7b475cf5b7163ef371e91b88a59"
 
 [[projects]]
   name = "github.com/pkg/errors"
@@ -135,7 +135,7 @@
     "html/atom",
     "html/charset"
   ]
-  revision = "07e8617a6db2368fa55d4616f371ee1b1403c817"
+  revision = "d0aafc73d5cdc42264b0af071c261abac580695e"
 
 [[projects]]
   branch = "master"
