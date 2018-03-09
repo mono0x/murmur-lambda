@@ -16,11 +16,19 @@ func handler() error {
 		if file.IsDir() {
 			continue
 		}
-		if !(strings.HasSuffix(file.Path, ".yml") || strings.HasSuffix(file.Path, ".yaml")) {
+
+		path := file.Path
+		if !(strings.HasSuffix(path, ".yml") || strings.HasSuffix(path, ".yaml")) {
 			continue
 		}
-		file := file
+
 		eg.Go(func() error {
+			file, err := Assets.Open(path)
+			if err != nil {
+				return err
+			}
+			defer file.Close()
+
 			config, err := murmur.LoadConfig(file)
 			if err != nil {
 				return err
