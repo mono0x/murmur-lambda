@@ -1,6 +1,8 @@
 package main
 
 import (
+	"strings"
+
 	"github.com/aws/aws-lambda-go/lambda"
 	murmur "github.com/mono0x/murmur/lib"
 	"golang.org/x/sync/errgroup"
@@ -11,6 +13,12 @@ import (
 func handler() error {
 	var eg errgroup.Group
 	for _, file := range Assets.Files {
+		if file.IsDir() {
+			continue
+		}
+		if !(strings.HasSuffix(file.Path, ".yml") || strings.HasSuffix(file.Path, ".yaml")) {
+			continue
+		}
 		file := file
 		eg.Go(func() error {
 			config, err := murmur.LoadConfig(file)
